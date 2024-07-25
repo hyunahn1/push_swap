@@ -19,16 +19,20 @@ typedef struct s_node
 {
 	s_stack *prev;
 	s_stack	*next;
-	int	top;
-	int	bottom;
-	int	size;
 	int	data;
 }		t_node;
 
+typedef struct s_stack
+{
+	int	size;
+	t_node	*top;
+	t_node	*bottom;
+}		t_stack;
+
 typedef struct s_program
 {
-	t_node	*stack_a;
-	t_node	*stack_b;
+	t_stack	*stack_a;
+	t_stack	*stack_b;
 	int	*array;
 }		t_program;
 
