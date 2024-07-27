@@ -3,12 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyunahn <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: hyunahn <hyunahn@student.42gyeongsan.      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/26 15:48:15 by hyunahn           #+#    #+#             */
-/*   Updated: 2024/02/26 16:02:05 by hyunahn          ###   ########.fr       */
+/*   Created: 2024/07/27 17:41:08 by hyunahn           #+#    #+#             */
+/*   Updated: 2024/07/27 17:41:23 by hyunahn          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "push_swap.h"
 
 int	ft_isdigit(int c)
 {

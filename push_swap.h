@@ -13,7 +13,7 @@
 #ifndef PUSH_SWAP_H
 #define PUSH_SWAP_H
 
-# include "printf.h"
+# include "printf/printf.h"
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdio.h>
@@ -47,7 +47,7 @@ t_node	*ft_lstnew(int data);
 void	clear_nodes(t_stack *stack);
 void	ft_putendl_fd(char *s, int fd);
 
-void print_stack(t_stack *stack);
+void	print_stack(t_stack *stack);
 void	init_stack(t_program *main);
 
 void	push_back(t_stack *stack, int data);
@@ -73,5 +73,9 @@ void    reverse_rotate(t_stack *stack);
 void    rra(t_program *main);
 void    rrb(t_program *main);
 void    rrr(t_program *main);
+
+void    push_swap(t_program *main, int size);
+void	ft_sort_two(t_program *main);
+void	ft_sort_three(t_program *main);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: hyunahn <hyunahn@student.42gyeongsan.      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/13 15:24:56 by hyunahn           #+#    #+#             */
-/*   Updated: 2024/07/27 11:13:44 by hyunahn          ###   ########.fr       */
+/*   Updated: 2024/07/27 19:10:37 by hyunahn          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,24 +49,9 @@ int	main(int argc, char **argv)
 		ft_error(0);
 	init_stack(&main);
 	parse_argv(&main, argc, argv);
-	//디버깅 하는 중
-	printf("Before swap:\n");
 	print_stack(main.stack_a);
-    	printf("After sa (swap a):\n");
-    	sa(&main);
-    	print_stack(main.stack_a);
-    	pb(&main);
-    	printf("After pa :\n");
-    	print_stack(main.stack_a);
-    	print_stack(main.stack_b);
-    	ra(&main);
-    	print_stack(main.stack_a);
-    	print_stack(main.stack_b);
-    	rra(&main);
-    	print_stack(main.stack_a);
-    	print_stack(main.stack_b);
-    	//디버깅 끝
-	//push_swap(main, main->stack_a.size);
+	push_swap(&main, main.stack_a->size);
+	print_stack(main.stack_a);
 	clear_nodes(main.stack_a);
 	clear_nodes(main.stack_b);
 	return (0);

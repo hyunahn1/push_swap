@@ -1,40 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyunahn <hyunahn@student.42gyeongsan.      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/27 17:40:48 by hyunahn           #+#    #+#             */
-/*   Updated: 2024/07/27 17:40:51 by hyunahn          ###   ########.fr       */
+/*   Created: 2024/07/27 18:17:42 by hyunahn           #+#    #+#             */
+/*   Updated: 2024/07/27 19:09:26 by hyunahn          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "push_swap.h"
 
-int	ft_atoi(const char *nptr)
+void	push_swap(t_program *main, int size)
 {
-	size_t	except;
-	size_t	denary;
-	int		i;
-
-	i = 0;
-	except = 1;
-	denary = 0;
-	while (nptr[i] == 32 || (nptr[i] >= 8 && nptr[i] <= 13))
-		i++;
-	if (nptr[i] == '-' || nptr[i] == '+')
-	{
-		if (nptr[i] == '-')
-			except *= -1;
-		i++;
-	}
-	while (nptr[i] >= '0' && nptr[i] <= '9')
-	{
-		denary *= 10;
-		denary += nptr[i] - 48;
-		i++;
-	}
-	return (denary * except);
+	if (size == 1)
+		return ;
+	else if (size == 2)
+		ft_sort_two(main);
+	else if (size == 3)
+		ft_sort_three(main);
+	/*
+	else if (size < 6)
+		ft_sort_small(&main);
+	else
+		ft_sort_big(&main);
+	*/
 }
