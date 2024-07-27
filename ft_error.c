@@ -10,10 +10,12 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_error(int num)
+#include "push_swap.h"
+
+int	ft_error(int num)
 {
 	if (num >= 1)
-		ft_putendl_fd("ERROR\n", 1);
+		ft_putendl_fd("ERROR", 1);
 	exit(1);
 	return (-1);
 }

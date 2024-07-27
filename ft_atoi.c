@@ -1,25 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyunahn <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/03 17:43:26 by hyunahn           #+#    #+#             */
-/*   Updated: 2024/03/03 17:48:16 by hyunahn          ###   ########.fr       */
+/*   Created: 2024/02/28 14:20:26 by hyunahn           #+#    #+#             */
+/*   Updated: 2024/07/26 16:41:49 by hyunahn          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_putendl_fd(char *s, int fd)
+int	ft_atoi(const char *nptr)
 {
-	if (fd < 0)
-		return ;
-	while (*s)
+	size_t	except;
+	size_t	denary;
+	int		i;
+
+	i = 0;
+	except = 1;
+	denary = 0;
+	while (nptr[i] == 32 || (nptr[i] >= 8 && nptr[i] <= 13))
+		i++;
+	if (nptr[i] == '-' || nptr[i] == '+')
 	{
-		write(fd, s, 1);
-		s++;
+		if (nptr[i] == '-')
+			except *= -1;
+		i++;
 	}
-	write(fd, "\n", 1);
+	while (nptr[i] >= '0' && nptr[i] <= '9')
+	{
+		denary *= 10;
+		denary += nptr[i] - 48;
+		i++;
+	}
+	return (denary * except);
 }
