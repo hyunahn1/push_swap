@@ -40,6 +40,7 @@ typedef struct s_program
 	int	array_size;
 }		t_program;
 
+int	ft_isdigit(int c);
 int	ft_atoi(const char *nptr);
 int	ft_error(int num);
 t_node	*ft_lstnew(int data);

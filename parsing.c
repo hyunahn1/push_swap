@@ -12,6 +12,35 @@
 
 #include "push_swap.h"
 
+int	is_integer(const char *str)
+{
+	int	i;
+	int	sign;
+	long	num;
+
+	i = 0;
+	sign = 0;
+	num = 0;
+	if (str[i] == '-' || str[i] == '+')
+	{
+		if (str[i] == '-')
+			sign = 1;
+		i++;
+	}
+	if (str[i] == '\0')
+		return (0);
+	while (str[i] != '\0')
+	{
+		if (!ft_isdigit((unsigned char)str[i]))
+			return (0);
+		num = num * 10 + (str[i] - '0');
+		if ((sign && -num < -2147483648) || (!sign && num > 2147483647))
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
 int	has_duplicates(int *array, int size)
 {
 	int	i;
@@ -106,15 +135,7 @@ void	parse_argv(t_program *main, int argc, char **argv)
 		ft_error(1);
 	while (i < main->array_size)
 	{
-		if (ft_atoi(argv[i + 1]) > 2147483647 || ft_atoi(argv[i + 1]) < -2147483648)
-		{
-			clear_nodes(main->stack_a);
-			clear_nodes(main->stack_b);
-			free(sorted_array);
-			free(main->array);
-			ft_error(1);
-		}
-		if (has_duplicates(main->array, main->array_size))
+		if (!is_integer(argv[i + 1]))
 		{
 			clear_nodes(main->stack_a);
 			clear_nodes(main->stack_b);
@@ -127,31 +148,39 @@ void	parse_argv(t_program *main, int argc, char **argv)
 		sorted_array[i] = num;
 		push_back(main->stack_a, num);
 		i++;
-		}
-		quicksort(sorted_array, 0, main->array_size - 1);
-		i = 0;
-		while (i < main->array_size)
-		{
-			j = 0;
-			while (j < main->array_size)
-			{
-				if (main->array[i] == sorted_array[j])
-				{
-					main->array[i] = j;
-					break;
-				}
-				j++;
-			}
-			i++;
-		}
-		current = main->stack_a->top->next;
-		i = 0;
-		while (current != main->stack_a->bottom)
-		{
-			current->data = main->array[i];
-			current = current->next;
-			i++;
-		}
+	}
+	if (has_duplicates(main->array, main->array_size))
+	{
+		clear_nodes(main->stack_a);
+		clear_nodes(main->stack_b);
 		free(sorted_array);
 		free(main->array);
+		ft_error(1);
+	}
+	quicksort(sorted_array, 0, main->array_size - 1);
+	i = 0;
+	while (i < main->array_size)
+	{
+		j = 0;
+		while (j < main->array_size)
+		{
+			if (main->array[i] == sorted_array[j])
+			{
+				main->array[i] = j;
+				break;
+			}
+			j++;
+		}
+		i++;
+	}
+	current = main->stack_a->top->next;
+	i = 0;
+	while (current != main->stack_a->bottom)
+	{
+		current->data = main->array[i];
+		current = current->next;
+		i++;
+	}
+	free(sorted_array);
+	free(main->array);
 }
