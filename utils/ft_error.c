@@ -1,0 +1,34 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_error.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hyunahn <hyunahn@student.42gyeongsan.      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/07/13 17:01:19 by hyunahn           #+#    #+#             */
+/*   Updated: 2024/07/13 17:08:06 by hyunahn          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "push_swap.h"
+
+int	ft_error(int num)
+{
+	if (num >= 1)
+		ft_putendl_fd("ERROR", 1);
+	exit(1);
+	return (-1);
+}
+
+void	free_split(char **split)
+{
+	int	i;
+
+	i = 0;
+	while (split[i] != NULL)
+	{
+		free(split[i]);
+		i++;
+	}
+	free(split);
+}

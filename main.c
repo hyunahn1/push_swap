@@ -12,16 +12,6 @@
 
 #include "push_swap.h"
 
-void print_stack(t_stack *stack) {
-    t_node *current = stack->top->next; // Skip the dummy node
-    printf("Stack A: ");
-    while (current != stack->bottom) { // Until the dummy bottom node
-        printf("%d ", current->data);
-        current = current->next;
-    }
-    printf("\n");
-}
-
 void	init_stack(t_program *main)
 {
 	main->stack_a = (t_stack *)malloc(sizeof(t_stack));
@@ -49,9 +39,8 @@ int	main(int argc, char **argv)
 		ft_error(0);
 	init_stack(&main);
 	parse_argv(&main, argc, argv);
-	print_stack(main.stack_a);
 	push_swap(&main, main.stack_a->size);
-	print_stack(main.stack_a);
+	free(main.array);
 	clear_nodes(main.stack_a);
 	clear_nodes(main.stack_b);
 	return (0);
